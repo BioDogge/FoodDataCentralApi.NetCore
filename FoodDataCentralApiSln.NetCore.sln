@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDataCentralApi.NetCore", "FoodDataCentralApi.NetCore\FoodDataCentralApi.NetCore.csproj", "{7BFC38AA-D7A5-4BB0-95AF-E1D43620247E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDataCentralApi.NetCore.Tests", "FoodDataCentralApi.NetCore.Tests\FoodDataCentralApi.NetCore.Tests.csproj", "{02F7D64F-B4DC-4271-B3AE-D7349556DC38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BFC38AA-D7A5-4BB0-95AF-E1D43620247E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BFC38AA-D7A5-4BB0-95AF-E1D43620247E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BFC38AA-D7A5-4BB0-95AF-E1D43620247E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BFC38AA-D7A5-4BB0-95AF-E1D43620247E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02F7D64F-B4DC-4271-B3AE-D7349556DC38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02F7D64F-B4DC-4271-B3AE-D7349556DC38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02F7D64F-B4DC-4271-B3AE-D7349556DC38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02F7D64F-B4DC-4271-B3AE-D7349556DC38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19164487-ADEE-4A5C-AB03-70B2A79EF42E}
+	EndGlobalSection
+EndGlobal
