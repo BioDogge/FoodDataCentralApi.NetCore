@@ -1,6 +1,7 @@
 ﻿using FoodDataCentralApi.NetCore.Extensions;
 using FoodDataCentralApi.NetCore.Models.FoodModels;
 using FoodDataCentralApi.NetCore.Models.SearchModels;
+using Newtonsoft.Json;
 
 namespace FoodDataCentralApi.NetCore.Services
 {
@@ -31,12 +32,12 @@ namespace FoodDataCentralApi.NetCore.Services
 			ParametersDictionary.Add(new KeyValuePair<string, string>("sortOrder", options.SortOrder));
 		}
 
-		public async Task<FoodResult> GetInformationAboutFood(QueryForFoodInfoOptions options)
+		public async Task<FoodAndNutrientsResult> GetInformationAboutFood(QueryForFoodInfoOptions options)
 		{
 			throw new NotImplementedException();
 		}
 
-		public async Task<SearchResult> SearchFoodAsync(QueryForSearchOptions options)
+		public async Task<SearchFoodResult> SearchFoodAsync(QueryForSearchOptions options)
 		{
 			AddParametersToDictionary(options);
 
@@ -49,12 +50,14 @@ namespace FoodDataCentralApi.NetCore.Services
 
 			string responseToString = await responseMessage.Content.ReadAsStringAsync();
 
-			return new SearchResult();
+			var result = ResultFromJson.ConvertFromJson<SearchFoodResult>(responseToString);
+
+			return result;
 		}
 
 		public void Dispose()
 		{
-			throw new NotImplementedException();
+			_client.Dispose();
 		}
 	}
 }

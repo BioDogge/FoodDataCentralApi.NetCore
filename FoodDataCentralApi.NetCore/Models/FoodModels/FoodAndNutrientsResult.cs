@@ -1,6 +1,7 @@
 ﻿namespace FoodDataCentralApi.NetCore.Models.FoodModels
 {
-	public class FoodResult
+	public class FoodAndNutrientsResult
 	{
+
 	}
 }

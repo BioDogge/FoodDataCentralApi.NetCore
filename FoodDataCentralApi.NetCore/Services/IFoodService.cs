@@ -5,7 +5,7 @@ namespace FoodDataCentralApi.NetCore.Services
 {
 	public interface IFoodService
 	{
-		Task<SearchResult> SearchFoodAsync(QueryForSearchOptions options);
-		Task<FoodResult> GetInformationAboutFood(QueryForFoodInfoOptions options);
+		Task<SearchFoodResult> SearchFoodAsync(QueryForSearchOptions options);
+		Task<FoodAndNutrientsResult> GetInformationAboutFood(QueryForFoodInfoOptions options);
 	}
 }
