@@ -1,7 +1,6 @@
 ﻿using FoodDataCentralApi.NetCore.Extensions;
 using FoodDataCentralApi.NetCore.Models.FoodModels;
 using FoodDataCentralApi.NetCore.Models.SearchModels;
-using Newtonsoft.Json;
 
 namespace FoodDataCentralApi.NetCore.Services
 {
@@ -34,11 +33,17 @@ namespace FoodDataCentralApi.NetCore.Services
 
 		public async Task<FoodAndNutrientsResult> GetInformationAboutFood(QueryForFoodInfoOptions options)
 		{
+			if (ParametersDictionary.Count != 0)
+				ParametersDictionary.Clear();
+
 			throw new NotImplementedException();
 		}
 
 		public async Task<SearchFoodResult> SearchFoodAsync(QueryForSearchOptions options)
 		{
+			if (ParametersDictionary.Count != 0)
+				ParametersDictionary.Clear();
+
 			AddParametersToDictionary(options);
 
 			var requestUrl = new Uri($"{_searchUrl}?{ParametersDictionary.ConcatenateParametersToStringQuery()}", UriKind.Relative);
