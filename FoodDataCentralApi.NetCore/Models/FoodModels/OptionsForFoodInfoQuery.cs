@@ -1,6 +1,6 @@
 ﻿namespace FoodDataCentralApi.NetCore.Models.FoodModels
 {
-	public class QueryForFoodInfoOptions
+	public class OptionsForFoodInfoQuery
 	{
 		public int FdcId { get; set; }
 

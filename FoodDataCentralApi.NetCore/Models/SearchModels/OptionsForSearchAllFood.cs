@@ -1,6 +1,6 @@
 ﻿namespace FoodDataCentralApi.NetCore.Models.SearchModels
 {
-    public class QueryForSearchOptions
+    public class OptionsForSearchAllFood
     {
 		public string Query { get; set; } = string.Empty;
 

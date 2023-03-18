@@ -2,7 +2,7 @@
 
 namespace FoodDataCentralApi.NetCore.Models.SearchModels
 {
-	public class SearchFoodResult
+	public class SearchAllFoodResult
 	{
 		[JsonProperty("totalHits")]
 		public int TotalHits { get; set; }

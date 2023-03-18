@@ -13,12 +13,12 @@ namespace FoodDataCentralApi.NetCore
             _foodService = new FoodService(apiKey);
         }
 
-        public async Task<SearchFoodResult> SearchResultAsync(QueryForSearchOptions options)
+        public async Task<SearchAllFoodResult> SearchAllFoodResultAsync(OptionsForSearchAllFood options)
         {
             return await _foodService.SearchFoodAsync(options);
         }
 
-        public async Task<FoodAndNutrientsResult> GetInfoFoodAsync(QueryForFoodInfoOptions options)
+        public async Task<FoodAndNutrientsResult> GetInfoFoodAndNutrientsAsync(OptionsForFoodInfoQuery options)
         {
             return await _foodService.GetInformationAboutFood(options);
         }

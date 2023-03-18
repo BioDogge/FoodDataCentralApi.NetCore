@@ -19,10 +19,10 @@ namespace FoodDataCentralApi.NetCore.Models.FoodModels
 		[JsonProperty("ndbNumber")]
 		public int NdbNumber { get; set; }
 
-		[JsonProperty("foodCategory")]
-		public FoodCategory Category { get; set; }
+		[JsonIgnore]
+		public FoodCategory FoodCategory { get; set; }
 
 		[JsonProperty("foodNutrients")]
-		public IEnumerable<FoodNutrient> FoodNutrients { get; set; }
+		public IEnumerable<FoodNutrient> Nutrients { get; set; }
 	}
 }
