@@ -4,17 +4,17 @@ namespace FoodDataCentralApi.NetCore.Tests
 {
 	public class FoodServiceTests
 	{
+		private readonly UsdaClient _usdaClient = new("DEMO_KEY");
+
 		[Fact]
 		public async Task ShouldFindApplesInFoundationType()
 		{
-			UsdaClient usdaClient = new UsdaClient("DEMO_KEY");
-
-			SearchAllFoodResult searchResult = await usdaClient.SearchAllFoodResultAsync(new OptionsForSearchAllFood
+			SearchAllFoodResult searchResult = await _usdaClient.SearchAllFoodResultAsync(new OptionsForSearchAllFood
 			{
 				Query = "apple"
 			});
 
-			IEnumerable<Food> foods = searchResult.Foods.ToList(); 
+			IEnumerable<Food> foods = searchResult.Foods.ToList();
 
 			Assert.True(foods.Any());
 			Assert.True(foods.Count() <= searchResult.Aggregations.DataType.Foundation);
@@ -24,9 +24,7 @@ namespace FoodDataCentralApi.NetCore.Tests
 		[Fact]
 		public async Task ShouldFindApplesInBrandedType()
 		{
-			UsdaClient usdaClient = new UsdaClient("DEMO_KEY");
-
-			SearchAllFoodResult searchResult = await usdaClient.SearchAllFoodResultAsync(new OptionsForSearchAllFood
+			SearchAllFoodResult searchResult = await _usdaClient.SearchAllFoodResultAsync(new OptionsForSearchAllFood
 			{
 				Query = "apple",
 				DataType = "Branded"
@@ -42,17 +40,41 @@ namespace FoodDataCentralApi.NetCore.Tests
 		[Fact]
 		public async Task ShouldFindApplesInfoWithNutrients()
 		{
-			UsdaClient usdaClient = new UsdaClient("DEMO_KEY");
-
-			FoodAndNutrientsResult result = await usdaClient.GetInfoFoodAndNutrientsAsync(new OptionsForFoodInfoQuery
+			FoodAndNutrientsResult result = await _usdaClient.GetInfoFoodAndNutrientsAsync(new OptionsForFoodInfoQuery
 			{
-				FdcId = 1750340,
-				Nutrients = new List<int> { 203, 204, 205 }
+				FdcId = 1750340
 			});
 
 			Assert.Equal(1750340, result.Id);
 			Assert.Equal("Apples, fuji, with skin, raw", result.Description);
 			Assert.True(result.Nutrients.Count() == 3);
+		}
+
+		[Fact]
+		public async Task ShouldReturnEmptyFoodList()
+		{
+			SearchAllFoodResult searchResult = await _usdaClient.SearchAllFoodResultAsync(new OptionsForSearchAllFood
+			{
+				Query = "fsdafasda13"
+			});
+
+			IEnumerable<Food> foods = searchResult.Foods.ToList();
+
+			Assert.Empty(foods);
+			Assert.Equal(0, searchResult.TotalHits);
+			Assert.Equal(0, searchResult.TotalPages);
+		}
+
+		[Fact]
+		public async Task CanOverflowTheListOfNutrientsInQuery()
+		{
+			FoodAndNutrientsResult result = await _usdaClient.GetInfoFoodAndNutrientsAsync(new OptionsForFoodInfoQuery
+			{
+				FdcId = 1750340,
+				Nutrients = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 }
+			});
+
+			Assert.Equal(3, result.Nutrients.Count());
 		}
 	}
 }

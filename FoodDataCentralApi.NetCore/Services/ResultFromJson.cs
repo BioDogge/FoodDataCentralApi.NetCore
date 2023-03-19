@@ -3,7 +3,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace FoodDataCentralApi.NetCore.Services
 {
-	public static class ResultFromJson
+	internal static class ResultFromJson
 	{
 		private static readonly JsonSerializerSettings settings = new JsonSerializerSettings
 		{

@@ -4,7 +4,7 @@ using FoodDataCentralApi.NetCore.Models.SearchModels;
 
 namespace FoodDataCentralApi.NetCore.Services
 {
-	public class FoodService : IFoodService, IDisposable
+	internal class FoodService : IFoodService, IDisposable
 	{
 		private readonly Uri _searchUrl = new Uri("/fdc/v1/foods/search", UriKind.Relative);
 		private readonly Uri _foodInfoUrl = new Uri("/fdc/v1/food", UriKind.Relative);
@@ -49,6 +49,16 @@ namespace FoodDataCentralApi.NetCore.Services
 			}
 		}
 
+		private async Task<string> RunTheQuery (Uri requestUrl)
+		{
+			var responseMessage = await _client.GetAsync(requestUrl);
+
+			if (!responseMessage.IsSuccessStatusCode)
+				throw new HttpRequestException("Error receiving data from server.");
+
+			return await responseMessage.Content.ReadAsStringAsync();
+		}
+
 		public async Task<FoodAndNutrientsResult> GetInformationAboutFood(OptionsForFoodInfoQuery options)
 		{
 			if (ParametersDictionary.Count != 0)
@@ -59,12 +69,7 @@ namespace FoodDataCentralApi.NetCore.Services
 
 			var requestUrl = new Uri($"{_foodInfoUrl}/{fdcId}?{ParametersDictionary.ConcatenateParametersToStringQuery()}", UriKind.Relative);
 
-			var responseMessage = await _client.GetAsync(requestUrl);
-
-			if (!responseMessage.IsSuccessStatusCode)
-				throw new HttpRequestException("Error receiving data from server.");
-
-			string responseToString = await responseMessage.Content.ReadAsStringAsync();
+			var responseToString = await RunTheQuery(requestUrl);
 
 			var result = ResultFromJson.ConvertFromJson<FoodAndNutrientsResult>(responseToString);
 
@@ -80,12 +85,7 @@ namespace FoodDataCentralApi.NetCore.Services
 
 			var requestUrl = new Uri($"{_searchUrl}?{ParametersDictionary.ConcatenateParametersToStringQuery()}", UriKind.Relative);
 
-			var responseMessage = await _client.GetAsync(requestUrl);
-
-			if (!responseMessage.IsSuccessStatusCode)
-				throw new HttpRequestException("Error receiving data from server.");
-
-			string responseToString = await responseMessage.Content.ReadAsStringAsync();
+			var responseToString = await RunTheQuery(requestUrl);
 
 			var result = ResultFromJson.ConvertFromJson<SearchAllFoodResult>(responseToString);
 

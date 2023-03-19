@@ -2,7 +2,7 @@
 
 namespace FoodDataCentralApi.NetCore.Extensions
 {
-	public static class ListExtensions
+	internal static class ListExtensions
 	{
 		public static string ConcatenateParametersToStringQuery(this List<KeyValuePair<string, string>> list)
 		{
