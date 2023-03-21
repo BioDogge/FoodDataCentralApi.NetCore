@@ -1,9 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>FoodDataCentralApi</Title>
+    <Version>0.1.0-beta</Version>
+    <PackageId>FoodDataCentralApi.Net</PackageId>
+    <Authors>BioDogge</Authors>
+    <Description>A .NET 6.0 library for interaction with the USDA's FoodData Central API.</Description>
+    <Copyright>© Alexey Manaev, 2023</Copyright>
+    <RepositoryUrl>https://github.com/BioDogge/FoodDataCentralApi.NetCore</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>usda fooddatacentral api .net web food</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
