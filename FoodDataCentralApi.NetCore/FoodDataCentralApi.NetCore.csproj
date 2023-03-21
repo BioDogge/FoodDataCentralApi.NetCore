@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>FoodDataCentralApi</Title>
-    <Version>0.1.0-beta</Version>
+    <Version>0.1.1-beta</Version>
     <PackageId>FoodDataCentralApi.Net</PackageId>
     <Authors>BioDogge</Authors>
     <Description>A .NET 6.0 library for interaction with the USDA's FoodData Central API.</Description>
@@ -15,6 +15,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>usda fooddatacentral api .net web food</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
